@@ -108,14 +108,14 @@
             this.el.onselectstart = () => false
             this.refreshIcon.onclick = () => { this.reset() }
             let originX, originY, trail = [], isMouseDown = false
-            this.slider.addEventListener('mousedown', function (e) {
-                originX = e.x, originY = e.y
+            this.slider.addEventListener('touchstart', function (e) {
+                originX = e.changedTouches[0].pageX, originY = e.changedTouches[0].pageY
                 isMouseDown = true
             })
-            document.addEventListener('mousemove', (e) => {
+            document.addEventListener('touchmove', (e) => {
                 if (!isMouseDown) return false
-                const moveX = e.x - originX
-                const moveY = e.y - originY
+                const moveX = e.changedTouches[0].pageX - originX
+                const moveY = e.changedTouches[0].pageY - originY
                 if (moveX < 0 || moveX + 38 >= w) return false
                 this.slider.style.left = moveX + 'px'
                 var blockLeft = (w - 40 - 20) / (w - 40) * moveX
@@ -124,7 +124,7 @@
                 this.sliderMask.style.width = moveX + 'px'
                 trail.push(moveY)
             })
-            document.addEventListener('mouseup', (e) => {
+            document.addEventListener('touchend', (e) => {
                 if (!isMouseDown) return false
                 isMouseDown = false
                 if (e.x == originX) return false
