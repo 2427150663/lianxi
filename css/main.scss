@@ -6,13 +6,6 @@
     box-sizing: border-box;
 }
 
-html,
-body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
 %flex {
     display: flex;
 }
@@ -24,6 +17,6 @@ body {
 #app {
     width: 7.5rem;
     margin: auto;
-    overflow: hidden;
     background: #f7f6fd;
+    overflow-x: hidden;
 }
