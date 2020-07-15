@@ -1,0 +1,54 @@
+#app {
+    background: white;
+    font-size: 0.36rem;
+    padding: 0.4rem 0.48rem;
+    h1 {
+        font-size: 0.54rem;
+    }
+    h2 {
+        margin-top: 0.24rem;
+        font-size: 0.3rem;
+        font-weight: 500;
+        a {
+            font-size: 0.3rem;
+            color: #1677FF;
+            margin-right: 0.16rem;
+        }
+        span {
+            color: #999999;
+        }
+    }
+    .little {
+        margin: 0.4rem 0;
+        display: flex;
+        align-items: center;
+        .spt {
+            width: 0.21rem;
+            height: 0.21rem;
+            border: 0.03rem solid #EEEEEE;
+            transform: rotate(45deg);
+        }
+        .bor {
+            height: 0.03rem;
+            width: 1.51rem;
+            background: #EEEEEE;
+        }
+    }
+    p {
+        line-height: 0.64rem;
+        color: #333333;
+    }
+    .p1 {
+        color: #999999;
+        margin-bottom: 1.02rem;
+    }
+    section {
+        p,
+        img {
+            margin-bottom: 0.2rem;
+        }
+        img {
+            width: 6.54rem;
+        }
+    }
+}

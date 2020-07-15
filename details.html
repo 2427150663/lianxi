@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文章详情</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/details.css">
+    <script src="js/main.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>
+
+        </h1>
+        <h2>
+            <a href="javascript:;"></a>
+            <span>2019-04-04</span>
+        </h2>
+        <div class="little">
+            <div class="spt"></div>
+            <div class="bor"></div>
+        </div>
+
+        <section>
+
+        </section>
+    </div>
+    <script>
+        let id = ""
+        if (window.location.search) {
+            id = window.location.search.split("=")[1]
+            let htm = "";
+            let list = $("#app .list");
+            //post
+            let postData = {
+                "type": id
+            };
+            fetch(`https://xaga.app.yuqing.cn:8088/ArticleList/GetArticleDtl?Id=${id}`)
+                .then(response => response.json())
+                .then(res => {
+                    let arr = res.data;
+                    $("#app h1").innerHTML = arr.Title;
+                    $("#app h2 a").innerHTML = arr.Reference
+                    $("#app h2 span").innerHTML = arr.PublishTime ? new Date(arr.PublishTime).toLocaleDateString().replace(/\//g, "-") : "";
+                    $("#app section").innerHTML = arr.Content
+                });
+
+        }
+    </script>
+</body>
+
+</html>

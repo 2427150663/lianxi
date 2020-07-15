@@ -2,79 +2,136 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>滑动拼图验证码</title>
-  <link rel="stylesheet" href="css/jigsaw.css">
-  <style>
-    .container {
-      width: 7.5rem;
-      margin: 0.2rem auto;
-      padding-top: 0.8rem;
-    }
-
-    input {
-      display: block;
-      width: 7.4rem;
-      line-height: 0.8rem;
-      height: 0.8rem;
-      outline: none;
-      border: 1px solid #c8cccf;
-      border-radius: 4px;
-      color: #6a6f77;
-      font-size: 0.6rem;
-      margin-bottom: 0.8rem;
-    }
-
-    #msg {
-      width: 100%;
-      line-height: 40px;
-      font-size: 0.4rem;
-      text-align: center;
-    }
-
-    a:link,
-    a:visited,
-    a:hover,
-    a:active {
-      margin-left: 100px;
-      color: #0366D6;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>洋县新时代文明实践管理系统</title>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
-  <div class="container">
-    <input value="admin" readonly />
-    <input type="password" value="1234567890" readonly />
-    <div id="captcha" style="position: relative"></div>
-    <div id="msg"></div>
-  </div>
-  <script>
-    (function (doc, win) {
-      var docEl = doc.documentElement,
-        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
-        recalc = function () {
-          var clientWidth = docEl.clientWidth;
-          if (!clientWidth) return;
-          if (clientWidth >= 750) {
-            docEl.style.fontSize = '100px';
-          }
-          else {
-            docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
-          }
-        };
+    <div id="app">
+        <header>
+            <!-- Swiper -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="img/bg.png" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/bg.png" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/bg.png" alt="">
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </header>
+        <section>
+            <div class="lie lie1">
+                <div class="top">
+                    <img src="img/st.png" alt="">
+                    <span>
+                        组织架构
+                    </span>
+                </div>
+                <div class="btm">
+                    <div class="blie" onclick="window.location.href='list.html?id=6'">
+                        管理机构
+                    </div>
+                    <div class="blie" onclick="window.location.href='list.html?id=7'">
+                        服务体系
+                    </div>
+                </div>
+            </div>
+            <div class="lie lie2">
+                <div class="top">
+                    <img src="img/lt.png" alt="">
+                    <span>
+                        实践动态
+                    </span>
+                </div>
+                <div class="btm">
+                    <div class="blie" onclick="window.location.href='list.html?id=2'">
+                        <div>
+                            <p>
+                                亮点动态
+                            </p>
+                        </div>
 
-      if (!doc.addEventListener) return;
-      win.addEventListener(resizeEvt, recalc, false);
-      recalc();
-    })(document, window);
-  </script>
-  <script src="js/jigsaw.js"></script>
-  <script>
-    jigsaw.init(document.getElementById('captcha'), function () {
-      document.getElementById('msg').innerHTML = '登录成功！'
-    });
-  </script>
+                    </div>
+                    <div class="blie" onclick="window.location.href='list.html?id=3'">
+                        <div>
+                            <p>
+                                志愿服务大
+                            </p>
+                            <p>
+                                队实践动态
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="blie" onclick="window.location.href='list.html?id=4'">
+                        <div>
+                            <p>
+                                实践所站
+                            </p>
+                            <p>
+                                动态
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lie lie3">
+                <div class="top">
+                    <img src="img/zt.png" alt="">
+                    <span>
+                        志愿服务
+                    </span>
+                </div>
+                <div class="btm">
+                    <div class="blie" onclick="window.location.href='list.html?id=9'">
+                        <div>
+                            <p>志愿者注册</p>
+                        </div>
+                    </div>
+                    <div class="blie" onclick="window.location.href='list.html?id=10'">
+                        <div>
+                            <p>志愿者团体</p>
+                            <p>注册</p>
+                        </div>
+                    </div>
+                    <div class="blie" onclick="window.location.href='list.html?id=11'">
+                        <div>
+                            <p>志愿服务</p>
+                            <p>项目管理</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="js/main.js"></script>
+    <!-- Swiper JS -->
+    <script src="js/swiper.min.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            pagination: {
+                el: '.swiper-pagination',
+                type: 'bullets',
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            autoplay: true,
+            loop: true
+        });
+    </script>
 </body>
 
 </html>

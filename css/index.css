@@ -1,0 +1,115 @@
+section .lie .top, section .lie .btm, section .lie1 .blie, section .lie2 .blie, section .lie3 .blie {
+  display: flex;
+}
+
+section .lie .top, section .lie1 .blie, section .lie2 .blie, section .lie3 .blie {
+  align-items: center;
+}
+
+header {
+  width: 7.5rem;
+  height: 3.20rem;
+}
+
+header img {
+  width: 7.5rem;
+  height: 3.20rem;
+}
+
+section {
+  font-size: 0.3rem;
+}
+
+section .lie {
+  background: white;
+  padding: 0 0.24rem;
+  padding-bottom: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+
+section .lie .blie {
+  border-radius: 0.14rem;
+}
+
+section .lie .top {
+  height: 0.9rem;
+  color: #333333;
+}
+
+section .lie .top img {
+  width: 0.4rem;
+  margin-right: 0.16rem;
+}
+
+section .lie .btm {
+  justify-content: space-between;
+  color: white;
+  font-size: 0.22rem;
+}
+
+section .lie1 .blie {
+  width: 3.41rem;
+  height: 1.66rem;
+  justify-content: center;
+}
+
+section .lie1 .blie:nth-child(1) {
+  background: url(../img/s1.png);
+}
+
+section .lie1 .blie:nth-child(2) {
+  background: url(../img/s2.png);
+}
+
+section .lie2 .blie {
+  width: 2.2rem;
+  height: 1.2rem;
+  justify-content: center;
+}
+
+section .lie2 .blie p {
+  text-align: center;
+}
+
+section .lie2 .blie:nth-child(1) {
+  background: url(../img/l1.png);
+}
+
+section .lie2 .blie:nth-child(2) {
+  background: url(../img/l2.png);
+}
+
+section .lie2 .blie:nth-child(3) {
+  background: url(../img/l3.png);
+}
+
+section .lie3 .blie {
+  width: 2.2rem;
+  height: 1.2rem;
+  justify-content: center;
+}
+
+section .lie3 .blie p {
+  text-align: center;
+}
+
+section .lie3 .blie:nth-child(1) {
+  background: url(../img/z1.png);
+}
+
+section .lie3 .blie:nth-child(2) {
+  background: url(../img/z2.png);
+}
+
+section .lie3 .blie:nth-child(3) {
+  background: url(../img/z3.png);
+}
+
+.swiper-pagination-bullet {
+  background-color: white;
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #d22124 !important;
+}

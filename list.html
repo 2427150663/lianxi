@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>志愿服务大队实践动态</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/list.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="list">
+
+        </div>
+    </div>
+</body>
+<script src="js/main.js"></script>
+<script>
+    let id = ""
+    let obj = {
+        "6": "管理机构",
+        "7": "服务体系",
+        "2": "亮点动态",
+        "4": "实践所站动态",
+        "3": "志愿服务大队实践动态",
+        "9": "志愿者注册",
+        "10": "志愿者团体注册",
+        "11": "志愿服务项目管理",
+    }
+    if (window.location.search) {
+        id = window.location.search.split("=")[1]
+        document.title = obj[id]
+
+        let htm = "";
+        let list = $("#app .list");
+        fetch(`https://xaga.app.yuqing.cn:8088/ArticleList/GetArticleList?Type=${id}`)
+            .then(response => response.json())
+            .then(res => {
+                let arr = res.data.DataList;
+                arr.forEach((x) => {
+                    htm += `<div class="lie">
+                        <a href='details.html?id=${x.WebID}' >
+                            <div class="left">
+                                <img src='img/l2.png' alt="">
+                            </div>
+                            <div class="right">
+                                ${x.Title}
+                            </div>
+                        </a>
+                    </div>`
+                })
+                list.innerHTML = htm;
+            });
+
+    }
+</script>
+
+</html>

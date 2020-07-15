@@ -1,0 +1,63 @@
+#app {
+  background: white;
+  font-size: 0.36rem;
+  padding: 0.4rem 0.48rem;
+}
+
+#app h1 {
+  font-size: 0.54rem;
+}
+
+#app h2 {
+  margin-top: 0.24rem;
+  font-size: 0.3rem;
+  font-weight: 500;
+}
+
+#app h2 a {
+  font-size: 0.3rem;
+  color: #1677FF;
+  margin-right: 0.16rem;
+}
+
+#app h2 span {
+  color: #999999;
+}
+
+#app .little {
+  margin: 0.4rem 0;
+  display: flex;
+  align-items: center;
+}
+
+#app .little .spt {
+  width: 0.21rem;
+  height: 0.21rem;
+  border: 0.03rem solid #EEEEEE;
+  transform: rotate(45deg);
+}
+
+#app .little .bor {
+  height: 0.03rem;
+  width: 1.51rem;
+  background: #EEEEEE;
+}
+
+#app p {
+  line-height: 0.64rem;
+  color: #333333;
+}
+
+#app .p1 {
+  color: #999999;
+  margin-bottom: 1.02rem;
+}
+
+#app section p,
+#app section img {
+  margin-bottom: 0.2rem;
+}
+
+#app section img {
+  width: 6.54rem;
+}
