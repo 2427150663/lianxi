@@ -1,7 +1,9 @@
 #app {
+    width: 7.5rem;
     background: white;
     font-size: 0.36rem;
     padding: 0.4rem 0.48rem;
+    box-sizing: border-box;
     h1 {
         font-size: 0.54rem;
     }
@@ -43,6 +45,7 @@
         margin-bottom: 1.02rem;
     }
     section {
+        width: 100%;
         p,
         img {
             margin-bottom: 0.2rem;
