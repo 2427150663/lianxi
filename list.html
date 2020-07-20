@@ -8,23 +8,26 @@
     <title>志愿服务大队实践动态</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/list.css">
+    <link rel="stylesheet" href="css/mescroll.min.css">
 </head>
 
 <body>
     <div id="app">
-        <div class="list">
-
+        <div id="goodsList" class="mescroll">
+            <div class="list" id="ulu">
+            </div>
         </div>
     </div>
 </body>
 <script src="js/main.js"></script>
+<script src="js/mescroll.min.js"></script>
 <script>
     let id = ""
     let obj = {
         "6": "管理机构",
         "7": "服务体系",
         "2": "亮点动态",
-        "4": "实践所站动态",
+        "12": "实践所站动态",
         "3": "志愿服务大队实践动态",
         "9": "志愿者注册",
         "10": "志愿者团体注册",
@@ -33,28 +36,137 @@
     if (window.location.search) {
         id = window.location.search.split("=")[1]
         document.title = obj[id]
+    }
 
-        let htm = "";
-        let list = $("#app .list");
-        fetch(`https://xaga.app.yuqing.cn:8088/ArticleList/GetArticleList?Type=${id}`)
+    //创建MeScroll对象,内部已默认开启下拉刷新,自动执行up.callback,重置列表数据;
+    var mescroll = new MeScroll("goodsList", {
+        down: {
+            auto: false, //是否在初始化完毕之后自动执行下拉回调callback; 默认true
+            callback: downCallback //下拉刷新的回调
+        },
+        up: {
+            auto: true, //初始化完毕,是否自动触发上拉加载的回调
+            isBoth: true, //上拉加载时,如果滑动到列表顶部是否可以同时触发下拉刷新;默认false,两者不可同时触发; 这里为了演示改为true,不必等列表加载完毕才可下拉;
+            callback: upCallback, //上拉加载的回调
+            isBounce: false, //此处禁止ios回弹,解析(务必认真阅读,特别是最后一点): http://www.mescroll.com/qa.html#q10
+            lazyLoad: {
+                use: true // 是否开启懒加载,默认false
+            },
+            page: {
+                num: 1, // 当前页码,默认0,回调之前会加1,即callback(page)会从1开始
+                size: 10 // 每页数据的数量
+            },
+            offset: 80, // 距底部多远时,触发upCallback
+            toTop: {
+                // 回到顶部按钮,需配置src才显示
+                src: "http://www.mescroll.com/img/mescroll-totop.png", // 图片路径
+                offset: 1000, // 列表滚动多少距离才显示回到顶部按钮,默认1000
+                duration: 300 // 回到顶部的动画时长,默认300ms
+            },
+            htmlNodata: '<p class="upwarp-nodata">~ 暂无更多数据 ~</p>' //无更多数据
+        }
+    });
+    /*下拉刷新的回调 */
+    function downCallback() {
+        mescroll.options.up.page = {
+                "num": 1,
+                "size": 10,
+                "time": null
+            }
+            //联网加载数据
+        getListDataFromNet(
+            mescroll.options.up.page.num,
+            mescroll.options.up.page.size,
+            function(curPageData) {
+                mescroll.endSuccess(curPageData.length);
+                setListData(curPageData, false);
+            },
+            function() {
+                mescroll.endErr();
+            }
+        );
+    }
+
+    let index = 1;
+    /*上拉加载的回调 page = {num:1, size:10}; num:当前页 从1开始, size:每页数据条数 */
+    function upCallback(page) {
+        //联网加载数据
+        getListDataFromNet(
+            page.num,
+            page.size,
+            function(curPageData) {
+                console.log(curPageData)
+                mescroll.endSuccess(curPageData.length);
+                setListData(curPageData, true);
+            },
+            function() {
+                mescroll.endErr();
+            }
+        );
+    }
+
+    /*设置列表数据*/
+    function setListData(curPageData, isAppend) {
+        let exchangeId = window.location.search.split("=")[1];
+        var listDom = document.getElementById("ulu");
+        let kt = "";
+        curPageData.forEach((x, i) => {
+            var htm = ` <a href='details.html?id=${x.WebID}' >
+                <div class="left">
+                    <img src='${x.Image1}' onerror='this.src="img/l2.png"' alt="">
+                </div>
+                <div class="right">
+                    ${x.Title}
+                </div>
+            </a>`
+            kt += `
+            <div class="lie">
+                <a href='details.html?id=${x.WebID}' >
+                    <div class="left">
+                        <img src='${x.Image1}' onerror='this.src="img/l2.png"' alt="">
+                    </div>
+                    <div class="right">
+                        ${x.Title}
+                    </div>
+                </a>
+            </div>
+            `
+            var liDom = document.createElement("div");
+            liDom.classList.add("lie")
+            liDom.innerHTML = htm;
+            if (isAppend) {
+                liDom.innerHTML = htm;
+                listDom.appendChild(liDom);
+            }
+        });
+        if (!isAppend) {
+            console.log(kt)
+            listDom.innerHTML = kt;
+        }
+    }
+
+    function getListDataFromNet(
+        pageNum,
+        pageSize,
+        successCallback,
+        errorCallback
+    ) {
+        index = pageNum;
+        let pageIndex = pageNum * 1 - 1
+        let dat = {
+            id: id,
+            PageIndex: pageIndex,
+            PageSize: pageSize
+        }
+        console.log(pageNum)
+
+        fetch(`https://xaga.app.yuqing.cn:8088/ArticleList/GetArticleList?Type=${id}&PageIndex=${pageIndex}&PageSize=${pageSize}`)
             .then(response => response.json())
             .then(res => {
-                let arr = res.data.DataList;
-                arr.forEach((x) => {
-                    htm += `<div class="lie">
-                        <a href='details.html?id=${x.WebID}' >
-                            <div class="left">
-                                <img src='img/l2.png' alt="">
-                            </div>
-                            <div class="right">
-                                ${x.Title}
-                            </div>
-                        </a>
-                    </div>`
-                })
-                list.innerHTML = htm;
-            });
-
+                successCallback(res.data.DataList)
+            }).catch(() => {
+                successCallback([])
+            })
     }
 </script>
 

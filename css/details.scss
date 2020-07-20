@@ -1,9 +1,9 @@
 #app {
-    width: 7.5rem;
     background: white;
     font-size: 0.36rem;
-    padding: 0.4rem 0.48rem;
-    box-sizing: border-box;
+    #con {
+        padding: 0.4rem 0.48rem;
+    }
     h1 {
         font-size: 0.54rem;
     }
@@ -25,8 +25,8 @@
         display: flex;
         align-items: center;
         .spt {
-            width: 0.21rem;
-            height: 0.21rem;
+            width: 0.23rem;
+            height: 0.23rem;
             border: 0.03rem solid #EEEEEE;
             transform: rotate(45deg);
         }
@@ -45,13 +45,18 @@
         margin-bottom: 1.02rem;
     }
     section {
-        width: 100%;
+        .__bg_gif {
+            display: none !important;
+        }
+        background-image: none !important;
         p,
         img {
             margin-bottom: 0.2rem;
+            margin: 0 !important;
         }
         img {
             width: 6.54rem;
+            margin: 0 !important;
         }
     }
 }

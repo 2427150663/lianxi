@@ -1,5 +1,6 @@
 #app {
   background: white;
+  margin: 0;
 }
 
 #app .list .lie {
@@ -28,10 +29,18 @@
 }
 
 #app .list .lie a .right {
+  width: 5.02rem;
   padding: 0 0.24rem;
   white-space: normal;
 }
 
 #app .list .lie:last-child a {
   border-bottom: 0px;
+}
+
+.mescroll {
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  height: auto;
 }
