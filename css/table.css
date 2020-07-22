@@ -16,8 +16,8 @@
 
 #con .lie .lieCon .left {
   width: 1.7rem;
-  line-height: 0.6rem;
-  height: 0.6rem;
+  line-height: 0.8rem;
+  height: 0.8rem;
   text-align: right;
   padding-right: 0.1rem;
 }
@@ -51,7 +51,7 @@
 }
 
 #con .lie .lieCon .right input {
-  height: 0.6rem;
+  height: 0.8rem;
 }
 
 #con .lie .lieCon .right #time {
