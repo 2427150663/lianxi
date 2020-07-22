@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/order.css">
+    <link rel="stylesheet" href="css/datePicker.css">
+</head>
+
+<body>
+    <div id="app">
+        <div id="box">
+            <div class="title">
+                服务信息
+            </div>
+            <div class="lieCon">
+                <div class="lie">
+                    <span>姓名: </span><input type="text" placeholder="姓名">
+                </div>
+                <div class="lie">
+                    <span> 电话: </span><input type="text" placeholder="电话">
+                </div>
+                <div class="lie">
+                    <span> 时间:</span> <input type="text" readonly id="date" placeholder="预约上门时间">
+                </div>
+                <div class="lie">
+                    <span> 地址:</span> <input type="text" placeholder="具体服务地址">
+                </div>
+            </div>
+            <div class="btm">
+                <button id="yes">提交</button>
+                <button id="no">取消</button>
+            </div>
+        </div>
+        <div id="bg" class="hide"></div>
+        <div id="addTotal" class="hide">
+            <div class="tatalCon">
+                <div class="top">
+                    √
+                </div>
+                <div class="btm">
+                    添加成功!
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="js/datePicker.js"></script>
+    <script>
+        //时间选择器
+        var calendar = new datePicker();
+        calendar.init({
+            'trigger': '#date',
+            /*按钮选择器，用于触发弹出插件*/
+            'type': 'datetime',
+            /*模式：date日期；datetime日期时间；time时间；ym年月；*/
+            'minDate': '1900-1-1 00:00',
+            /*最小日期*/
+            'maxDate': '2100-12-31 00:00',
+            /*最大日期*/
+            'onSubmit': function() { /*确认时触发事件*/
+                var theSelectData = calendar.value;
+            },
+            'onClose': function() { /*取消时触发事件*/ }
+        });
+        let type = ""
+        let obj = {
+            "1": "团体点单",
+            "2": "个人点单"
+        }
+        let id;
+        if (window.location.search) {
+            id = window.location.search.split("=")[1]
+        }
+        if (window.localStorage.getItem("title")) {
+            document.title = window.localStorage.getItem("title")
+        }
+        let box = document.querySelector("#box");
+        let addTotal = document.querySelector("#addTotal");
+        let bg = document.querySelector("#bg");
+        let iptAll = box.querySelectorAll("input");
+
+        box.querySelector(".btm").onclick = function(ev) {
+            let e = ev || event;
+            let tar = e.target || window.srcElement;
+            if (tar.id == "yes") {
+                submit();
+            }
+            if (tar.id == "no") {
+                window.history.go(-1);
+            }
+        }
+
+        //提交
+        function submit() {
+            let dataObj = {};
+            iptAll.forEach((x, i) => {
+                let key = x.parentNode.querySelector("span").innerText.replace(/:/g, "")
+                dataObj[key] = x.value
+            });
+            for (var i in dataObj) {
+                if (i == '电话') {
+                    if (!(/^1[3456789]\d{9}$/.test(dataObj[i]))) {
+                        alert("请输入正确的电话");
+                        return
+                    }
+                }
+                if (dataObj[i] == "") {
+                    alert(i + "不能为空！")
+                    return;
+                }
+            };
+            console.log(JSON.stringify(dataObj))
+            addTotal.classList.remove("hide");
+            bg.classList.remove("hide");
+            setTimeout(() => {
+                addTotal.classList.add("hide");
+                window.location.href = "ll.html"
+            }, 500)
+        };
+    </script>
+</body>
+
+</html>

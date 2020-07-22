@@ -1,0 +1,28 @@
+#con {
+  font-size: 0.26rem;
+  text-align: center;
+  padding: 0.5rem;
+  color: white;
+}
+
+#con .lie {
+  width: 100%;
+  height: 1rem;
+  background: #ff7d53;
+  margin-bottom: 0.5rem;
+  line-height: 1rem;
+  border-radius: 0.1rem;
+  position: relative;
+}
+
+#con .lie2 {
+  background: #11d4c8;
+}
+
+#con .lie3 {
+  background: #429cfd;
+}
+
+#con .lie4 {
+  background: #7869fe;
+}

@@ -1,0 +1,138 @@
+#con {
+  font-size: 0.22rem;
+  text-align: center;
+  padding: 1rem 0.5rem;
+  color: white;
+}
+
+#con .top {
+  width: 3rem;
+  height: 1rem;
+  background: #ff7d53;
+  margin: auto;
+  text-align: center;
+  line-height: 1rem;
+  position: relative;
+  border-radius: 0.1rem;
+}
+
+#con .top::after {
+  content: "";
+  width: 0.03rem;
+  height: 0.5rem;
+  position: absolute;
+  background: #d12325;
+  bottom: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+}
+
+#con .btm {
+  display: flex;
+  justify-content: space-between;
+}
+
+#con .btm .lie {
+  width: 40%;
+}
+
+#con .btm .lie .lieCon {
+  margin-top: 1rem;
+  width: 100%;
+  height: 1rem;
+  line-height: 1rem;
+  border-radius: 0.1rem;
+  position: relative;
+}
+
+#con .btm .lie .lieCon1 {
+  background: #11d4c8;
+}
+
+#con .btm .lie .lieCon2 {
+  background: #429cfd;
+}
+
+#con .btm .lie .lieCon3 {
+  margin-top: 1rem;
+  background: #7869fe;
+}
+
+#con .btm .lie .lieCon1::after {
+  content: "";
+  width: 0.03rem;
+  height: 0.5rem;
+  position: absolute;
+  background: #d12325;
+  top: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+}
+
+#con .btm .lie .lieCon1::before {
+  content: "";
+  width: 1.96rem;
+  height: 0.03rem;
+  position: absolute;
+  background: #d12325;
+  top: -0.5rem;
+  left: 88%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+}
+
+#con .btm .lie .lieCon2::after {
+  content: "";
+  width: 0.03rem;
+  height: 0.5rem;
+  position: absolute;
+  background: #d12325;
+  top: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+}
+
+#con .btm .lie .lieCon2::before {
+  content: "";
+  width: 1.96rem;
+  height: 0.03rem;
+  position: absolute;
+  background: #d12325;
+  top: -0.5rem;
+  left: 12%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+}
+
+#con .btm .lie .lieCon3::before {
+  content: "";
+  width: 0.03rem;
+  height: 1rem;
+  position: absolute;
+  background: #d12325;
+  top: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+}

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>志愿征集</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/table.css">
+</head>
+
+<body>
+    <div id="app">
+        <div id="con">
+            <div class="lie">
+                <div class="lieCon">
+                    <div class="left">
+                        项目名称:
+                    </div>
+                    <div class="right">
+                        <input type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="lie">
+                <div class="lieCon">
+                    <div class="left">
+                        服务主体:
+                    </div>
+                    <div class="right">
+                        <input type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="lie">
+                <div class="lieCon">
+                    <div class="left">
+                        服务对象:
+                    </div>
+                    <div class="right">
+                        <input type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="lie">
+                <div class="lieCon">
+                    <div class="left">
+                        服务内容:
+                    </div>
+                    <div class="right">
+                        <textarea></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="lie">
+                <div class="lieCon">
+                    <div class="left">
+                        项目负责人:
+                    </div>
+                    <div class="right">
+                        <input type="text">
+                    </div>
+                </div>
+                <div class="lieCon">
+                    <div class="left">
+                        姓名:
+                    </div>
+                    <div class="right">
+                        <input type="text">
+                    </div>
+                </div>
+                <div class="lieCon">
+                    <div class="left">
+                        性别:
+                    </div>
+                    <div class="right" id="sex">
+                        <label>
+                            <input type="radio" name="sex" value="1" checked>男
+                        </label>
+                        <label>
+                            <input type="radio" name="sex" value="2">女
+                        </label>
+                    </div>
+                </div>
+                <div class="lieCon">
+                    <div class="left">
+                        办公电话:
+                    </div>
+                    <div class="right">
+                        <input type="text">
+                    </div>
+                </div>
+                <div class="lieCon">
+                    <div class="left">
+                        工作单位<br />及职务:
+                    </div>
+                    <div class="right">
+                        <textarea></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="lie">
+                <div class="lieCon">
+                    <div class="left">
+                        项目联系人:
+                    </div>
+                    <div class="right">
+                        <input type="text">
+                    </div>
+                </div>
+                <div class="lieCon">
+                    <div class="left">
+                        姓名:
+                    </div>
+                    <div class="right">
+                        <input type="text">
+                    </div>
+                </div>
+                <div class="lieCon">
+                    <div class="left">
+                        办公电话:
+                    </div>
+                    <div class="right">
+                        <input type="text">
+                    </div>
+                </div>
+                <div class="lieCon">
+                    <div class="left">
+                        手机:
+                    </div>
+                    <div class="right">
+                        <input type="text">
+                    </div>
+                </div>
+                <div class="lieCon">
+                    <div class="left">
+                        邮箱:
+                    </div>
+                    <div class="right">
+                        <input type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="lie">
+                <div class="lieCon">
+                    <div class="left">
+                        项目背景:
+                    </div>
+                    <div class="right">
+                        <textarea></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="lie">
+                <div class="lieCon">
+                    <div class="left">
+                        项目简介:
+                    </div>
+                    <div class="right">
+                        <textarea></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="lie">
+                <div class="lieCon">
+                    <div class="left">
+                        实施过程:
+                    </div>
+                    <div class="right">
+                        <textarea></textarea>
+                    </div>
+                </div>
+            </div>
+            <button id="submit">
+                提交
+            </button>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+    <script>
+        let submit = document.querySelector("#submit")
+        submit.onclick = function() {
+            submitFun();
+        }
+
+        function submitFun() {
+            //所有input
+            let iptAll = document.querySelectorAll("#con input[type='text']");
+            let dataObj = {}
+            iptAll.forEach((x) => {
+                let key = x.parentNode.parentNode.querySelector(".left").innerText.replace(/:/g, "")
+                dataObj[key] = x.value
+            });
+            //性别
+            let radioAll = document.querySelectorAll("#sex input")
+            dataObj.sex = 1;
+            radioAll.forEach((x) => {
+                if (x.checked) {
+                    dataObj.sex = x.value
+                }
+            });
+            //文本框
+            let txtAll = document.querySelectorAll("#con textarea");
+            txtAll.forEach((x) => {
+                let key = x.parentNode.parentNode.querySelector(".left").innerText.replace(/:/g, "").replace(/[\r\n]/g, "");
+                dataObj[key] = x.value
+            });
+            for (var i in dataObj) {
+                if (dataObj[i].trim() == "") {
+                    alert(i + "不能为空！")
+                    return;
+                }
+            };
+            window.history.go(-1);
+        }
+    </script>
+</body>
+
+</html>
