@@ -39,6 +39,7 @@
   padding: 0 0.2rem;
   margin-top: 0.1rem;
   display: flex;
+  line-height: 0.4rem;
 }
 
 #con .lie .top .tCon ul li .left {
